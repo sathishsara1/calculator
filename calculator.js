@@ -78,35 +78,13 @@ function updateExpression(k,clicked){
     }
 }
 function evaluateExpression(k){
-    for(var i=0;i<k.length;i++){
-        if (k[i]==='+'||k[i]==='-'||k[i]==='/'||k[i]==='%'||k[i]==='*'||k[i]==='√'){
-            var a = k.slice (0,i);
-            for(var j=i+1;j<k.length;j++){
-                if ((k[j]==='+'||k[j]==='-'||k[j]==='/'||k[j]==='%'||k[j]==='*'||k[j]==='√') && j!==k.length-1){
-                    var b = k.slice(i+1,j);
-                    break;
-                }
-                if(j===k.length-1){
-                    var b = k.slice(i+1,k.length);
-                }
-            }
-            var x = calculate(a,b,k[i]);
-            var y = toString(x) + k.slice(j,k.length);
-            k = y;
-            document.getElementById("div1").innerHTML = k;
-        }
-    }  
-
-}
+    document.getElementById("div1").innerHTML = eval(k);
+} 
 function calculate(a,b,c){
     switch(c){
-        case '+': return parseFloat(a) + parseFloat(b);
-                    break;
-        case '-': return parseFloat(a) + parseFloat(b);
-                    break;
-        case '*': return parseFloat(a) + parseFloat(b);
-                    break;
-        case '/': return parseFloat(a) + parseFloat(b);
-                    break;
+        case '+': return (parseFloat(a) + parseFloat(b));
+        case '-': return (parseFloat(a) - parseFloat(b));
+        case '*': return (parseFloat(a) * parseFloat(b));
+        case '/': return (parseFloat(a) / parseFloat(b));
     }
 }
