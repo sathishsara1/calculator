@@ -1,7 +1,8 @@
 document.addEventListener("click",function(event){
     var clicked = event.target.id;
-    var arr = ["left","divides","seven","eight","nine","multiply","four","five","six","subtract","one","two",
-                "three","add","right","zero","decimal"];
+    animations(clicked);
+    var arr = ["pi","divides","seven","eight","nine","multiply","four","five","six","subtract","one","two",
+                "three","add","exp","zero","decimal"];
     k = document.getElementById("div1").innerHTML;
     if (arr.includes(clicked)){
         updateExpression(k,clicked);
@@ -22,12 +23,18 @@ document.addEventListener("click",function(event){
         k = evaluateExpression(k);
     }
 })
+function animations(clicked){
+    $("#"+clicked).addClass("animation");
+  setTimeout(function () {
+    $("#"+clicked).removeClass("animation");
+  }, 100);
+}
 function updateExpression(k,clicked){
     if (k==="0"){
         k = "";
     }
     switch(clicked){
-        case "left" : k+="(";
+        case "pi" : k+="3.14";
                 document.getElementById("div1").innerHTML = k;
                 break;   
         case "divides" : k+="/";
@@ -69,12 +76,15 @@ function updateExpression(k,clicked){
         case "multiply" : k+="*";
                 document.getElementById("div1").innerHTML = k;
                 break;   
-        case "right" : k+=")";
+        case "exp" : k+="2.718";
                 document.getElementById("div1").innerHTML = k;
                 break;
         case "decimal" : k+=".";
-                        document.getElementById("div1").innerHTML = k;
-                        break;
+                document.getElementById("div1").innerHTML = k;
+                break;
+        case "zero" : k+="0";
+                document.getElementById("div1").innerHTML = k;
+                 break;
     }
 }
 function evaluateExpression(k){
